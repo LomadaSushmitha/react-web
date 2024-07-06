@@ -2,7 +2,7 @@ import React ,{ useState, useEffect } from "react";
 
 function Video() {
 
-  const  [Videos,setVideos] = useState([])
+  const[videos,setVideos] = useState([])
    
   useEffect(() => {
     fetch("videoData.json")
@@ -18,9 +18,9 @@ function Video() {
   return(
     
        <div clasName="container">
-         <div ClassName="row">
+         <div className="row">
            {
-             Videos.map((videos,key)) => (
+             videos.map((video,key) => (
                <div key={key} className="col-md-4">
                  <a href={`https://youtube.com//watch?v=${video.img_id}`}>
                    <div classname="card">
@@ -33,19 +33,17 @@ function Video() {
                        <h5 className="card-title">{video.title}</h5>
                        <p className="card-text">{video.channelName}</p>
                        <small>
-                         {{video.viewsCount} views - {video.likesCount} likes-
+                         {video.viewsCount} views - {video.likesCount} likes-
                          {video.duration}m
-                          </small>
-                        </div>
+                        </small>
                       </div>
-                    </a>    
-
+                    </div>
+                  </a>    
+                </div>
+              ))
+            }
           </div>
-             )
-           }
-         </div>
-
-       </div>
+        </div>
   );
 }
 
